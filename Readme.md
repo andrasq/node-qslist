@@ -18,17 +18,17 @@ Overview
 Class Api
 ---------
 
-## q.push( item )
+### q.push( item )
 
-## q.shift( )
+### q.shift( )
 
-## q.unshift( item )
+### q.unshift( item )
 
-## q.isEmpty( )
+### q.isEmpty( )
 
-## q.peek( )
+### q.peek( )
 
-## q.length
+### q.length
 
 
 Engine
@@ -36,19 +36,19 @@ Engine
 
 Qslist internally is a function library that operates on an external linked list.
 
-## qslist.create( )
+### qslist.create( )
 
 Factory that returns an empty linked list with with fields head, tail and length.
 
-## qslist.push( list, item )
+### qslist.push( list, item )
 
-## qslist.shift( list )
+### qslist.shift( list )
 
-## qslist.unshift( list, item )
+### qslist.unshift( list, item )
 
-## qslist.isEmpty( list )
+### qslist.isEmpty( list )
 
-## qslist.peek( )
+### qslist.peek( )
 
 
 Todo
