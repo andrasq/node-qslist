@@ -1,0 +1,15 @@
+{
+  "name": "qslist",
+  "version": "0.1.0",
+  "main": "qslist.js",
+  "description": "quick singly-linked list",
+  "license": "Apache-2.0",
+  "repository": {
+    "url": "git://github.com/andrasq/node-qprintf",
+    "type": "git"
+  },
+  "keywords": [ "singly-linked", "list" ],
+  "scripts": {
+    "test": "nodejs test-qslist.js"
+  }
+}
