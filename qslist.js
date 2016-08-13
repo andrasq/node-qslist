@@ -1,5 +1,5 @@
 /**
- * quick singly-linked list
+ * qslist -- quick singly-linked list
  *
  * Copyright (C) 2016 Andras Radics
  * Licensed under the Apache License, Version 2.0
@@ -74,6 +74,25 @@ commands.SList.prototype = {
     isEmpty: function isEmpty() { return !this.list.head },
     peek: function peek() { return this.list.head },
     getLength: function getLength() { return this.list.length },
+}
+
+// aliases
+commands.enqueue = commands.push;
+commands.dequeue = commands.shift;
+commands.append = commands.push;
+commands.prepend = commands.unshift;
+
+commands.SList.prototype = {
+    push: function push(item) { commands.push(this.list, {x:item, next:0}) },
+    unshift: function unshift(item) { commands.unshift(this.list, {x:item, next:0}) },
+    shift: function shift() { return this.list.head ? commands.shift(this.list).x : undefined },
+    isEmpty: function isEmpty() { return !this.list.head },
+    peek: function peek() { return this.list.head },
+    getLength: function getLength() { return this.list.length },
+    append: function append(item) { this.push(item) },
+    prepend: function prepend(item) { this.unshift(item) },
+    enqueue: function enqueue(item) { this.push(item) },
+    dequeue: function dequeue() { return this.shift() },
 }
 
 module.exports = commands;
