@@ -15,8 +15,8 @@ Overview
         // => 1
 
 
-Api
----
+Class Api
+---------
 
 ## q.push( item )
 
@@ -30,6 +30,32 @@ Api
 
 ## q.length
 
+
+Engine
+------
+
+Qslist internally is a function library that operates on an external linked list.
+
+## qslist.create( )
+
+Factory that returns an empty linked list with with fields head, tail and length.
+
+## qslist.push( list, item )
+
+## qslist.shift( list )
+
+## qslist.unshift( list, item )
+
+## qslist.isEmpty( list )
+
+## qslist.peek( )
+
+
+Todo
+----
+
+- rename head/tail/length to _head/_tail/_length to piggy-back better
+- rename next field to _next
 
 Related work
 ------------
