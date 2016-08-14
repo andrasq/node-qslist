@@ -7,8 +7,8 @@ Quick singly-linked list.
 Overview
 --------
 
-        var List = require('qslist').SList;
-        var q = new List();
+        var qslist = require('qslist');
+        var q = new qslist.SList();
 
         q.push(1);
         var x = q.shift();
@@ -18,26 +18,31 @@ Overview
 Class Api
 ---------
 
+        q = new qslist.SList();
+
 ### q.push( item )
 
-Add the item to the end of the list.
+Add the item to the end of the list.  The item may be any data type.  Also aliased
+as `enqueue` and `append`.  Note that `undefined` may be stored as an item, but can
+also be returned from an empty list by `peek` or `shift`.  Use `isEmpty` to distinguish.
 
 ### q.shift( )
 
-Remove and return the first item at the front of the list.
+Remove and return the first item at the front of the list.  Returns `undefined` if
+the list is empty.  Also aliased as `dequeue`.
 
 ### q.unshift( item )
 
-Add the item to the front of the list.
+Add the item to the front of the list.  Also aliased as `prepend`.
 
 ### q.isEmpty( )
 
-Test whether the list is empty.
+Test whether the list contains no items.
 
 ### q.peek( )
 
-Return the item at the front of the list, but do not remove it.
-Returns null if the list is empty.
+Return the item at the front of the list, but without removing it.
+Returns undefined if the list is empty.
 
 ### q.length
 
@@ -45,8 +50,10 @@ The `length` property is set to the number of items on the list.
 Do not modify this field.
 
 
-Engine
-------
+Engine Api
+----------
+
+        var qslist = require('qslist');
 
 Qslist internally is a function library that operates on an external linked list.
 
@@ -82,6 +89,7 @@ Todo
 
 - rename head/tail/length to _head/_tail/_length to piggy-back better
 - rename next field to _next
+
 
 Related work
 ------------

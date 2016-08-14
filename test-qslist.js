@@ -17,13 +17,13 @@ var a = {a:1}, b = {b:1}, c = {c:1}, d = {d:1};
 
 var q = qslist.create();
 assert(qslist.isEmpty(q));
-assert(q.head === null && q.tail === null);
+assert(q.head === undefined && q.tail === undefined);
 
 // peek
 qslist.push(q, a);
 assert(qslist.peek(q) === a);
 qslist.shift(q);
-assert(qslist.peek(q) === null);
+assert(qslist.peek(q) === undefined);
 
 // linkage on push
 var q = qslist.create();
@@ -31,22 +31,22 @@ assert(q.length === 0);
 qslist.push(q, a);
 assert(q.length === 1);
 assert(!qslist.isEmpty(q));
-assert(a.next === null);
+assert(a.next === undefined);
 assert(q.head === a && q.tail === a);
 qslist.push(q, b);
 assert(q.length === 2);
 assert(!qslist.isEmpty(q));
-assert(a.next === b && b.next === null);
+assert(a.next === b && b.next === undefined);
 assert(q.head === a && q.tail === b);
 qslist.push(q, c);
 assert(q.length === 3);
 assert(!qslist.isEmpty(q));
-assert(a.next === b && b.next === c && c.next === null);
+assert(a.next === b && b.next === c && c.next === undefined);
 assert(q.head === a && q.tail === c);
 qslist.push(q, d);
 assert(q.length === 4);
 assert(!qslist.isEmpty(q));
-assert(a.next === b && b.next === c && c.next === d && d.next === null);
+assert(a.next === b && b.next === c && c.next === d && d.next === undefined);
 assert(q.head === a && q.tail === d);
 
 // linkage on shift
@@ -61,9 +61,9 @@ assert(q.length === 1);
 assert(q.head === d && q.tail === d);
 assert(qslist.shift(q) === d);
 assert(q.length === 0);
-assert(q.head === null && q.tail === null);
+assert(q.head === undefined && q.tail === undefined);
 assert(qslist.isEmpty(q));
-assert(qslist.shift(q) === null);
+assert(qslist.shift(q) === undefined);
 assert(q.length === 0);
 
 // linkage on unshift
@@ -71,11 +71,11 @@ qslist.unshift(q, a);
 assert(!qslist.isEmpty(q));
 assert(q.length === 1);
 assert(q.head === a && q.tail === a);
-assert(a.next === null);
+assert(a.next === undefined);
 qslist.unshift(q, b);
 assert(q.length === 2);
 assert(q.head === b && q.tail === a);
-assert(b.next === a && a.next === null);
+assert(b.next === a && a.next === undefined);
 
 
 // quicktest:
@@ -161,13 +161,13 @@ L = new Slist();
 
 assert = require('assert');
 
-assert(L._head == null);
-assert(L._tail == null);
+assert(L._head == undefined);
+assert(L._tail == undefined);
 assert(L.isEmpty());
 
 L.append({a: 1});
 assert(L._head == L._tail);
-assert(L._head._next == null);
+assert(L._head._next == undefined);
 assert.equal(L._head.a, 1);
 assert(!L.isEmpty());
 
@@ -180,7 +180,7 @@ assert(L._head._next == L._tail);
 L.append({a: 3});
 assert(L._head.a == 1);
 assert(L._tail.a == 3);
-assert(L._tail._next == null);
+assert(L._tail._next == undefined);
 
 L.shift();
 assert(L._head.a == 2);
@@ -192,8 +192,8 @@ assert(L._tail.a == 3);
 
 L.shift();
 assert(L.isEmpty());
-assert.strictEqual(L.shift(), null);
-assert.strictEqual(L.shift(), null);
+assert.strictEqual(L.shift(), undefined);
+assert.strictEqual(L.shift(), undefined);
 
 /**/
 
@@ -212,7 +212,7 @@ var t1, t2, x;
 var L2 = qslist.create();
 
 t1 = Date.now();
-for (var i=1; i<=1000000; i++) qslist.enqueue(L2, {a: i, next: 0});
+for (var i=1; i<=10000000; i++) qslist.enqueue(L2, {a: i, next: 0});
 t2 = Date.now();
 console.log("qslist.enqueue 1m in %d ms", t2 - t1);
 // 6.2.2: 14m/s
@@ -224,7 +224,7 @@ console.log("qslist.dequeue 1m in %d ms", t2 - t1);
 // 6.2.2: 35m/s
 
 t1 = Date.now();
-for (var i=0; i<1000000; i++) L.append({a: i, next: null});
+for (var i=0; i<1000000; i++) L.append({a: i, next: undefined});
 t2 = Date.now();
 console.log("appended 1m in %d ms", t2 - t1);
 // 100k: v0.10.52: 7m/s, v5.10.1: 4m/s
