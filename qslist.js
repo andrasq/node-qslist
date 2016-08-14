@@ -20,13 +20,13 @@ var commands = {
         if (!q.tail) {
             q.head = q.tail = item;
             q.length += 1;
-            item.next = undefined;
+            item._next = undefined;
         }
         else {
-            q.tail.next = item;
+            q.tail._next = item;
             q.tail = item;
             q.length += 1;
-            item.next = undefined;
+            item._next = undefined;
         }
     },
 
@@ -34,10 +34,10 @@ var commands = {
         if (!q.head) {
             q.head = q.tail = item;
             q.length = +1;
-            item.next = undefined;
+            item._next = undefined;
         }
         else {
-            item.next = q.head;
+            item._next = q.head;
             q.head = item;
             q.length += 1;
         }
@@ -46,7 +46,7 @@ var commands = {
     shift: function shift( q ) {
         var item = q.head;
         if (item) {
-            if (item.next) q.head = item.next;
+            if (item._next) q.head = item._next;
             else q.head = q.tail = undefined;
             q.length -= 1;
         }
@@ -74,8 +74,8 @@ commands.append = commands.push;
 commands.prepend = commands.unshift;
 
 commands.SList.prototype = {
-    push: function push(item) { commands.push(this.list, {x:item, next:0}) },
-    unshift: function unshift(item) { commands.unshift(this.list, {x:item, next:0}) },
+    push: function push(item) { commands.push(this.list, {x:item, _next:0}) },
+    unshift: function unshift(item) { commands.unshift(this.list, {x:item, _next:0}) },
     shift: function shift() { return this.list.head ? commands.shift(this.list).x : undefined },
     isEmpty: function isEmpty() { return !this.list.head },
     peek: function peek() { return this.list.head ? this.list.head.x : undefined },

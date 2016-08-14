@@ -63,12 +63,12 @@ Factory that returns an empty linked list with with fields head, tail and length
 
 ### qslist.push( list, obj )
 
-Append the object to the end of the list.  The object's `next` property will be
+Append the object to the end of the list.  The object's `_next` property will be
 used for linkage.
 
 ### qslist.shift( list )
 
-Remove and return the first object at the front of the list.  The `next` field of
+Remove and return the first object at the front of the list.  The `_next` field of
 the object is not cleared, and may contain unspecified data.
 
 ### qslist.unshift( list, obj )
@@ -88,7 +88,6 @@ Todo
 ----
 
 - rename head/tail/length to _head/_tail/_length to piggy-back better
-- rename next field to _next
 
 
 Related work

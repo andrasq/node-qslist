@@ -31,22 +31,22 @@ assert(q.length === 0);
 qslist.push(q, a);
 assert(q.length === 1);
 assert(!qslist.isEmpty(q));
-assert(a.next === undefined);
+assert(a._next === undefined);
 assert(q.head === a && q.tail === a);
 qslist.push(q, b);
 assert(q.length === 2);
 assert(!qslist.isEmpty(q));
-assert(a.next === b && b.next === undefined);
+assert(a._next === b && b._next === undefined);
 assert(q.head === a && q.tail === b);
 qslist.push(q, c);
 assert(q.length === 3);
 assert(!qslist.isEmpty(q));
-assert(a.next === b && b.next === c && c.next === undefined);
+assert(a._next === b && b._next === c && c._next === undefined);
 assert(q.head === a && q.tail === c);
 qslist.push(q, d);
 assert(q.length === 4);
 assert(!qslist.isEmpty(q));
-assert(a.next === b && b.next === c && c.next === d && d.next === undefined);
+assert(a._next === b && b._next === c && c._next === d && d._next === undefined);
 assert(q.head === a && q.tail === d);
 
 // linkage on shift
@@ -71,11 +71,11 @@ qslist.unshift(q, a);
 assert(!qslist.isEmpty(q));
 assert(q.length === 1);
 assert(q.head === a && q.tail === a);
-assert(a.next === undefined);
+assert(a._next === undefined);
 qslist.unshift(q, b);
 assert(q.length === 2);
 assert(q.head === b && q.tail === a);
-assert(b.next === a && a.next === undefined);
+assert(b._next === a && a._next === undefined);
 
 
 // quicktest:
@@ -90,7 +90,7 @@ if (0) {
 console.log("AR: qslist");
 var x;
 var q = module.exports.create();
-timeit(nloops, function(){ module.exports.push(q, {next: null}) });
+timeit(nloops, function(){ module.exports.push(q, {_next: null}) });
 // 12m/s 100k, 9.1m/s 1m, 6m/s 100, 2.8m/s 1k, 8.5m/s 10k (25m/s 100k on rerun with all objects on free list)
 timeit(nloops, function(){ x = module.exports.shift(q) });
 // 20-22m/s 100k, 39m/s 1m (28m/s on rerun once all objects on free list)
@@ -100,14 +100,14 @@ if (0) {
 console.log("AR: qslist");
 var x;
 var q = module.exports.create();
-timeit(nloops, function(){ module.exports.push(q, {next: null}) });
+timeit(nloops, function(){ module.exports.push(q, {_next: null}) });
 timeit(nloops, function(){ x = module.exports.shift(q) });
 }
 
 if (1) {
 console.log("AR: SList");
 var q = new module.exports.SList();
-timeit(nloops, function(){ q.push({next: null}) });
+timeit(nloops, function(){ q.push({_next: null}) });
 // 11-12m/s 100k (25m/s 100k on rerun when all objs on free list)
 timeit(nloops, function(){ x = q.shift() });
 // 21-22m/s 100k (26-28m/s 100k on rerun when objs on free list)
@@ -116,7 +116,7 @@ timeit(nloops, function(){ x = q.shift() });
 if (1) {
 console.log("AR: SList");
 var q = new module.exports.SList();
-timeit(nloops, function(){ q.push({next: null}) });
+timeit(nloops, function(){ q.push({_next: null}) });
 timeit(nloops, function(){ x = q.shift() });
 }
 
@@ -139,7 +139,7 @@ console.log("AR: qlist");
 var q = new qlist();
 //for (var i=0; i<100; i++) q.push(0); for (var i=0; i<100; i++) x = q.pop();
 // faster to push new objects into empty qlist??
-timeit(nloops, function(){ q.push({next: null}) });
+timeit(nloops, function(){ q.push({_next: null}) });
 // 24m/s 100k, 15m/s 1m
 timeit(nloops, function(){ x = q.shift() });
 // 37.8m/s 100k, 109.5m/s 1m, 9.8m/s 100
@@ -212,7 +212,7 @@ var t1, t2, x;
 var L2 = qslist.create();
 
 t1 = Date.now();
-for (var i=1; i<=10000000; i++) qslist.enqueue(L2, {a: i, next: 0});
+for (var i=1; i<=10000000; i++) qslist.enqueue(L2, {a: i, _next: 0});
 t2 = Date.now();
 console.log("qslist.enqueue 1m in %d ms", t2 - t1);
 // 6.2.2: 14m/s
@@ -224,7 +224,7 @@ console.log("qslist.dequeue 1m in %d ms", t2 - t1);
 // 6.2.2: 35m/s
 
 t1 = Date.now();
-for (var i=0; i<1000000; i++) L.append({a: i, next: undefined});
+for (var i=0; i<1000000; i++) L.append({a: i, _next: undefined});
 t2 = Date.now();
 console.log("appended 1m in %d ms", t2 - t1);
 // 100k: v0.10.52: 7m/s, v5.10.1: 4m/s
