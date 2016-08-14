@@ -20,15 +20,29 @@ Class Api
 
 ### q.push( item )
 
+Add the item to the end of the list.
+
 ### q.shift( )
+
+Remove and return the first item at the front of the list.
 
 ### q.unshift( item )
 
+Add the item to the front of the list.
+
 ### q.isEmpty( )
+
+Test whether the list is empty.
 
 ### q.peek( )
 
+Return the item at the front of the list, but do not remove it.
+Returns null if the list is empty.
+
 ### q.length
+
+The `length` property is set to the number of items on the list.
+Do not modify this field.
 
 
 Engine
@@ -40,15 +54,27 @@ Qslist internally is a function library that operates on an external linked list
 
 Factory that returns an empty linked list with with fields head, tail and length.
 
-### qslist.push( list, item )
+### qslist.push( list, obj )
+
+Append the object to the end of the list.  The object's `next` property will be
+used for linkage.
 
 ### qslist.shift( list )
 
-### qslist.unshift( list, item )
+Remove and return the first object at the front of the list.  The `next` field of
+the object is not cleared, and may contain unspecified data.
+
+### qslist.unshift( list, obj )
+
+Prepend the object to the front of the list.
 
 ### qslist.isEmpty( list )
 
+Test whether the list contains no objects.
+
 ### qslist.peek( )
+
+Return the first object at the front of the list, but without removing the object.
 
 
 Todo

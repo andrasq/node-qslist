@@ -5,7 +5,7 @@
   "description": "quick singly-linked list",
   "license": "Apache-2.0",
   "repository": {
-    "url": "git://github.com/andrasq/node-qprintf",
+    "url": "git://github.com/andrasq/node-qslist",
     "type": "git"
   },
   "keywords": [ "singly-linked", "list" ],
