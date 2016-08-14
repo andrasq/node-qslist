@@ -150,52 +150,9 @@ timeit(nloops, function(){ q.push(null) });
 
 /**/
 
-/**
- * qslist -- singly-linked fifo list
- */
 
 Slist = require('./').SList;
 L = new Slist();
-
-/**
-
-assert = require('assert');
-
-assert(L._head == undefined);
-assert(L._tail == undefined);
-assert(L.isEmpty());
-
-L.append({a: 1});
-assert(L._head == L._tail);
-assert(L._head._next == undefined);
-assert.equal(L._head.a, 1);
-assert(!L.isEmpty());
-
-L.append({a: 2});
-assert(L._head != L._tail);
-assert(L._head.a == 1);
-assert(L._tail.a == 2);
-assert(L._head._next == L._tail);
-
-L.append({a: 3});
-assert(L._head.a == 1);
-assert(L._tail.a == 3);
-assert(L._tail._next == undefined);
-
-L.shift();
-assert(L._head.a == 2);
-assert(L._tail.a == 3);
-
-L.shift();
-assert(L._head.a == 3);
-assert(L._tail.a == 3);
-
-L.shift();
-assert(L.isEmpty());
-assert.strictEqual(L.shift(), undefined);
-assert.strictEqual(L.shift(), undefined);
-
-/**/
 
 // pre-allocate heap and exercise the list to optimize the methods
 for (var i=0; i<1000000; i++) L.append({});
