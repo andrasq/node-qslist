@@ -13,20 +13,20 @@
 
 var commands = {
     create: function create( ) {
-        return { head: null, tail: null, length: 0 };
+        return { head: undefined, tail: undefined, length: 0 };
     },
 
     push: function push( q, item ) {
         if (!q.tail) {
             q.head = q.tail = item;
             q.length = 1;
-            item.next = null;
+            item.next = undefined;
         }
         else {
             q.tail.next = item;
             q.tail = item;
             q.length += 1;
-            item.next = null;
+            item.next = undefined;
         }
     },
 
@@ -34,7 +34,7 @@ var commands = {
         if (!q.head) {
             q.head = q.tail = item;
             q.length = 1;
-            item.next = null;
+            item.next = undefined;
         }
         else {
             item.next = q.head;
@@ -47,7 +47,7 @@ var commands = {
         var item = q.head;
         if (item) {
             if (item.next) q.head = item.next;
-            else q.head = q.tail = null;
+            else q.head = q.tail = undefined;
             q.length -= 1;
         }
         return item;
