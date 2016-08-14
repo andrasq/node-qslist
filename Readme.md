@@ -35,10 +35,6 @@ the list is empty.  Also aliased as `dequeue`.
 
 Add the item to the front of the list.  Also aliased as `prepend`.
 
-### q.unshift( item )
-
-Add the item to the front of the list.  Also aliased as `prepend`.
-
 ### q.isEmpty( )
 
 Test whether the list contains no items.
