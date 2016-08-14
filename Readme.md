@@ -24,12 +24,16 @@ Class Api
 
 Add the item to the end of the list.  The item may be any data type.  Also aliased
 as `enqueue` and `append`.  Note that `undefined` may be stored as an item, but can
-also be returned from an empty list by `peek` or `shift`.  Use `isEmpty` to distinguish.
+also be returned from an empty list by `peek` or `shift`; use `isEmpty` to distinguish.
 
 ### q.shift( )
 
 Remove and return the first item at the front of the list.  Returns `undefined` if
 the list is empty.  Also aliased as `dequeue`.
+
+### q.unshift( item )
+
+Add the item to the front of the list.  Also aliased as `prepend`.
 
 ### q.unshift( item )
 
