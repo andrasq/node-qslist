@@ -95,4 +95,4 @@ Related work
 
 - [fast-list](https://npmjs.org/package/fast-list) - fast doubly-linked list
 - [qlist](https://npmjs.org/package/qlist) - very fast list implemented in a circular buffer
-- [quickq](git@github.com:andrasq/node-quickq) - the project that generated this package
+- [quickq](https://github.com/andrasq/node-quickq) - the project that generated this package
